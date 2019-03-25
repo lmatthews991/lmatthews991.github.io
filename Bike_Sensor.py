@@ -9,7 +9,7 @@ GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 t = time.time()
 t2 = time.time()
 distance = 0
-wheel_c = 20
+wheel_c = 1.9151148816283
 
 with open('testcsv.csv', 'w') as f:
     writer = csv.writer(f)
@@ -26,7 +26,7 @@ while True:
         duration = time.time() - t2
         distance += wheel_c
         rpm = 1/elapsed *60
-        speed = (wheel_c*rpm*60)/1000
+        speed = (wheel_c*(rpm/60))
         print('Sensor Triggered', elapsed, distance, duration, rpm, speed, timestamp, stamp)
         t = newt
         time.sleep(0.2)
@@ -46,4 +46,5 @@ while True:
         # Reinitialise Start
         
         time.sleep(0.2)   
-       
+        
+     
